@@ -9,9 +9,15 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
+    @IBOutlet weak var myDatePicker: UIDatePicker!
+    @IBOutlet weak var myAgeInfo: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        myDatePicker.datePickerMode = UIDatePickerMode.Date
+        myDatePicker.sizeToFit()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -20,6 +26,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func findAge(sender: UIButton) {
+        let selDate = myDatePicker.date
+        let currDate = NSDate()
+        let myCalendar = NSCalendar.currentCalendar()
+        let naVayasu = myCalendar.components(NSCalendarUnit.CalendarUnitYear, fromDate: selDate, toDate: currDate, options:nil)
+        myAgeInfo.text = "Hi, U R \(naVayasu.year) Yrs Old"
+    }
 
 }
 
