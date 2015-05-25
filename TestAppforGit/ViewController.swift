@@ -17,7 +17,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         myDatePicker.datePickerMode = UIDatePickerMode.Date
-        myDatePicker.sizeToFit()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
