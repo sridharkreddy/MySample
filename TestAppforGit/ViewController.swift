@@ -13,11 +13,13 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var myDatePicker: UIDatePicker!
     @IBOutlet weak var myAgeInfo: UILabel!
-
+    
+    var controller: UIAlertController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         myDatePicker.datePickerMode = UIDatePickerMode.Date
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +32,14 @@ class ViewController: UIViewController {
         let currDate = NSDate()
         let myCalendar = NSCalendar.currentCalendar()
         let naVayasu = myCalendar.components(NSCalendarUnit.CalendarUnitYear, fromDate: selDate, toDate: currDate, options:nil)
-        myAgeInfo.text = "Hi, U R \(naVayasu.year) Yrs Old"
+        //myAgeInfo.text = "Hi, U R \(naVayasu.year) Yrs Old"
+        controller = UIAlertController(title: "Result",
+            message: "Hi, U R \(naVayasu.year) Yrs Old",
+            preferredStyle: .Alert)
+        let action = UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: {(paramAction:UIAlertAction!) in println("The Done button was tapped")
+            })
+        controller!.addAction(action)
+        self.presentViewController(controller!, animated: true, completion: nil)
     }
 
 }
